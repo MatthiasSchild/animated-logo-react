@@ -1,0 +1,50 @@
+@import "../colors"
+
+#logo-container
+  width: 100%
+  max-width: 800px
+  margin: auto
+
+  #logo
+    // copied from SVG
+    fill-rule: evenodd
+    clip-rule: evenodd
+    stroke-linejoin: round
+    stroke-miterlimit: 2
+
+    .path
+      // copied from SVG
+      fill: white
+      fill-rule: nonzero
+      stroke: $primary
+
+    .path1
+      // copied from SVG
+      stroke-width: 4px
+
+      // animation stuff
+      stroke-dasharray: 730px
+      stroke-dashoffset: 730px
+      animation: line-anim 1s ease forwards, fill-anim 1s 4s ease forwards
+
+    .path2, .path3, .path4
+      // copied from SVG
+      stroke-width: 0.01px
+
+      // animation stuff
+      stroke-dasharray: 4px
+      stroke-dashoffset: 4px
+
+    @for $i from 2 through 4
+      .path#{$i}
+        animation: line-anim 4s #{$i - 1}s ease forwards, fill-anim 1s 4s ease forwards
+
+@keyframes fill-anim
+  from
+    fill: white
+  to
+    fill: $primary
+
+@keyframes line-anim
+  to
+    stroke-dashoffset: 0
